@@ -1,2 +1,5 @@
 # cote_study
-coding_test_study
+코딩 테스트 문제를 공부하는 레포지토리입니다.
+
+# Language
+파이썬과 자바를 주로 공부합니다.
