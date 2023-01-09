@@ -1,0 +1,54 @@
+package cote_study_java;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class babbling {
+	static int dupPerCount; // 중복순열 갯수
+
+	public static void main(String[] args) {
+		
+		String[] babble = {"aya", "ye", "woo", "ma" };
+		int res = solution(babble);
+
+	}
+	
+    public static int solution(String[] babbling) {
+        int answer = 0;
+        
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		int r = sc.nextInt();
+		
+		int arr[] = new int[n];
+		for(int i=1; i<=n; i++) arr[i-1] = i;
+	
+		LinkedList<Integer> list = new LinkedList<>();
+		
+		System.out.println("****중복순열****");
+		rePermutation(list, n, r);
+		list.clear();
+		
+        return answer;
+    }
+    
+	private static void rePermutation(LinkedList<Integer> list, int n, int r) {
+		if(list.size() == r){
+			for(int i : list){
+				System.out.print(i+" ");
+			}
+			System.out.println();
+			return;
+		}
+		for(int i=0; i<n; i++){
+			list.add(i);
+			rePermutation(list, n, r);
+			list.removeLast();//해당 넘버를 다시 제거 (즉,뽑지 않고 다음 번호 뽑기위함)
+		
+		}
+		
+	}
+
+}

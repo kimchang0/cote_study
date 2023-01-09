@@ -1,0 +1,59 @@
+package cote_study_java;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class babbling {
+	static int dupPerCount; // 중복순열 갯수
+
+	public static void main(String[] args) {
+		
+		String[] babble = {"aya", "ye", "woo", "ma" };
+		int res = solution(babble);
+
+	}
+	
+    public static int solution(String[] babbling) {
+        int answer = 0;
+		
+		int r = 1;
+//		int n = 4;
+	
+		LinkedList<Integer> list = new LinkedList<>();
+//		LinkedList<String> list = new LinkedList<>();
+		LinkedList<String> n = new LinkedList<>();
+		for (String i : babbling) {
+			System.out.println(i);
+			n.add(i);
+		}
+	
+		int check[] = new int[n.size()];
+		System.out.println("****순  열****");
+		permutation(list, check, n, r);
+		list.clear();
+		
+        return answer;
+    }
+    
+	private static void permutation(LinkedList<Integer> list, int[] check, LinkedList<String> n, int r) {
+		if(list.size() == r){
+			for(int i : list){
+				System.out.print(i+" ");
+			}
+			System.out.println();
+			return;
+		}
+		for(int i=0; i<n.size(); i++){//**중복 순열과 다른 점
+			if(check[i] == 0){//자기자신을 못뽑게 해야지 중복이 안됨(이미 뽑은 것은 뽑지 않도록 체크)
+				check[i] = 1;//자기자신을 못뽑게 해야지 중복이 안됨
+				list.add(i);
+				permutation(list, check, n, r);
+				list.removeLast();//해당 넘버를 다시 제거 (즉,뽑지 않고 다음 번호 뽑기위함)
+				check[i] = 0;
+			}
+		}
+		
+	}
+
+}
