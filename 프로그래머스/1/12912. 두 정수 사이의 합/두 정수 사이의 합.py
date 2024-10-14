@@ -1,2 +1,4 @@
 def solution(a, b):
-    return sum(([i for i in range(a, b - 1 if a > b else b + 1, -1 if a > b else 1)]))
+    if a > b:
+        a, b = b, a
+    return sum(range(a, b + 1))
